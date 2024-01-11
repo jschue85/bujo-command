@@ -1,0 +1,40 @@
+{{ define "index" }}
+{{ template "headerPartial" . }}
+<div class="container">
+	{{ if .Owner}}
+	<p>Owner: {{ .Owner }}</p>
+	<p>Year: {{ .Year }}
+	<div class="row">
+		<div class="col-7">
+			<h5>Journals</h5>
+			<ul class="list-group">
+				{{ range .Journals }}
+				<li class="list-group-item">{{.Description}} - {{.Year}}</li>
+				{{ end }}
+			</ul>
+		</div>
+		<div class="col-3">
+			<h5>Add A Journal</h5>
+		</div>
+	</div>
+	{{ else }}
+	<div class="card">
+		<div class="card-header">
+			Select Owner
+		</div>
+		<div class="card-body">
+			<form class="row g-3" action="/" method="post">
+				<div class="col-auto">
+					<label for="owner" class="form-label">Owner</label>
+					<input type="text" class="form-control" id="owner" placeholder="Owner">
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-3">Select</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	{{ end }}
+</div>
+{{ template "footerPartial" . }}
+{{end}}

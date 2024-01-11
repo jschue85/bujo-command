@@ -1,0 +1,24 @@
+{{ define "daily" }}
+{{ template "headerPartial"}}
+<div class="container">
+	<div class="row">
+		<div class="col-7">
+			<h1>Daily Journal</h1>
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">{{.Month}}.{{.Day}} {{.DayOfWeek}}</h5>
+					<ul class="list-group card-text">
+						{{ range .Logs }}
+						<li class="list-group-item">{{.Type}} {{.Note}}</li>
+						{{ end }}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<p>Add Task</p>
+		</div>
+	</div>
+</div>
+{{end}}
+{{ template "footerPartial" }}
