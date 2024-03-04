@@ -1,0 +1,55 @@
+.primary-bg {
+	background-color:mintcream
+}
+
+.secondary-container {
+	background-color: var(--bs-info-bg-subtle);
+	color: var(--bs-info-text-emphasis);
+	border-color: var(--bs-info-border-subtle);
+	border-radius: var(--bs-border-radius-lg);
+	border-width: 2px;
+}
+
+.primary-text {
+	color: #36454F;
+}
+
+.secondary-text {
+	color: #363020
+}
+
+.primary-border {
+	border-color: #36454f;
+	border-width: 2px;
+}
+
+.form-signin {
+	width: 30em;
+}
+
+h1 {
+  color: #36454F;
+  font-family: arial, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+}
+
+h2 {
+  color: #777777;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+}
+
+h3 {
+  color: #999999;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+}

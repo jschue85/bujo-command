@@ -1,40 +1,54 @@
 {{ define "index" }}
-{{ template "headerPartial" . }}
-<div class="container">
-	{{ if .Owner}}
-	<p>Owner: {{ .Owner }}</p>
-	<p>Year: {{ .Year }}
-	<div class="row">
-		<div class="col-7">
-			<h5>Journals</h5>
-			<ul class="list-group">
-				{{ range .Journals }}
-				<li class="list-group-item">{{.Description}} - {{.Year}}</li>
-				{{ end }}
-			</ul>
-		</div>
-		<div class="col-3">
-			<h5>Add A Journal</h5>
-		</div>
-	</div>
-	{{ else }}
-	<div class="card">
-		<div class="card-header">
-			Select Owner
-		</div>
-		<div class="card-body">
-			<form class="row g-3" action="/" method="post">
-				<div class="col-auto">
-					<label for="owner" class="form-label">Owner</label>
-					<input type="text" class="form-control" id="owner" placeholder="Owner">
+<!doctype html>
+<html lang="en">
+{{ template "headPartial" . }}
+
+<body id="journal-body" class="primary-bg primary-text" data-bs-theme=" light">
+	{{ template "navbar" . }}
+	<div class="pt-5" id="main">
+		{{ if .CurrentUser.UserName}}
+		{{ template "journallist" . }}
+		{{ else }}
+		<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+			<div class="row align-items-center g-lg-5 py-5">
+				<div class="col-lg-7 text-center text-lg-start">
+					<h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Welcome to Bujo Command!</h1>
+					<p class="col-lg-10 fs-4">
+						Please signup to create and manage your bullet journals on the web.
+					</p>
 				</div>
-				<div class="col-auto">
-					<button type="submit" class="btn btn-primary mb-3">Select</button>
+				<div class="col-md-10 mx-auto col-lg-5">
+					<form class="p-4 p-md-5 border rounded-3 secondary-bg secondary-text">
+						<div class="form-floating mb-3">
+							<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+							<label for="floatingInput">Email address</label>
+							<div data-lastpass-icon-root="true"
+								style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;">
+							</div>
+						</div>
+						<div class="form-floating mb-3">
+							<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+							<label for="floatingPassword">Password</label>
+							<div data-lastpass-icon-root="true"
+								style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;">
+							</div>
+						</div>
+						<div class="checkbox mb-3">
+							<label>
+								<input type="checkbox" value="remember-me"> Remember me
+							</label>
+						</div>
+						<button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+						<hr class="my-4">
+						<small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
+		{{ end }}
 	</div>
-	{{ end }}
-</div>
-{{ template "footerPartial" . }}
+	{{ template "footerPartial" . }}
+</body>
+
+</html>
 {{end}}

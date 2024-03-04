@@ -9,21 +9,25 @@ import (
 )
 
 const PORT = 8080
-const EXTERNAL_LOOPBACK = "172.30.32.1"
+const EXTERNAL_LOOPBACK = "172.21.144.1"
 
 func main() {
+	fmt.Println("Starting...")
 	tr := &htmlrenderer.Template{
 		Templates: htmlrenderer.ConfigTemplatePath("public/views/*.html"),
 	}
 	e := echo.New()
-
-	e.POST("/", viewmodels.SelectJournal)
-
+	e.Static("/static", "public/views/static")
 	e.Renderer = tr
-
+	e.GET("/journal/:id", viewmodels.Journal)
+	e.POST("/journal", viewmodels.AddJournal)
+	e.DELETE("/journal/:id", viewmodels.DeleteJournal)
+	e.GET("/journal/:id/daily/:month/:day", viewmodels.Daily)
+	e.GET("/login", viewmodels.LoginForm)
+	e.POST("/login", viewmodels.Login)
 	e.GET("/", viewmodels.Index)
-	e.GET("/daily", viewmodels.Daily)
+	//e.GET("/daily", viewmodels.Daily)
 
-	fmt.Printf("https://%s:%d", EXTERNAL_LOOPBACK, PORT)
+	fmt.Printf("http://%s:%d", EXTERNAL_LOOPBACK, PORT)
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", PORT)))
 }

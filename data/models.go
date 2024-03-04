@@ -1,9 +1,17 @@
 package data
 
+type User struct {
+	Id        int
+	UserName  string
+	FirstName string
+	LastName  string
+}
+
 type Journal struct {
 	Id          int
 	Year        int
-	Owner       string
+	UserId      int
+	Name        string
 	Description string
 }
 
